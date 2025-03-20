@@ -6,7 +6,7 @@ module UniteLegale::Importable
   require "zip"
 
   included do
-    BATCH_SIZE = 1000
+    BATCH_SIZE = 10_000
     ZIP_SOURCE = "https://files.data.gouv.fr/insee-sirene/StockUniteLegale_utf8.zip"
     ZIP_DESTINATION = Rails.root.join("storage", "StockUniteLegale_utf8.zip")
     CSV_DESTINATION = Rails.root.join("storage", "StockUniteLegale_utf8.csv")
