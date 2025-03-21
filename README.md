@@ -12,7 +12,7 @@ La réutilisation permet de tester l'API pour accéder aux données de SIRENE, d
 
 Vous pouvez essayer l'API en utilisant une instance hébergée chez OVHcloud :
 
-    curl 'https://sirene.searchd.fr/api/v1/unites_legales/?q=Doctolib'
+    curl 'https://api.sirened.fr/api/v1/unites_legales/?q=Doctolib'
 
 Si celle-ci ne répond pas, merci de bien vouloir nous écrire par mail à equipe+sirene-as-api@dilolabs.fr
 
@@ -25,11 +25,11 @@ Pré-requis :
 
 Cloner le dépôt :
 
-    git clone git@github.com/dilolabs/sirene-as-api.git
+    git clone git@github.com/dilolabs/sirened.git
 
 Se déplacer dans le répertoire du projet :
 
-    cd sirene-as-api
+    cd sirened
 
 Installer les dépendances et créer la base de données :
 
@@ -57,7 +57,7 @@ Requêter l'API avec le SIREN d'une entreprise :
 
 En production, le job d'import des données de SIRENE est automatiquement exécuté tous les mois.
 
-Si vous souhaitez déployer Sirene as API en production et avez besoin d'assistance, merci de bien vouloir nous écrire par mail à equipe+sirene-as-api@dilolabs.fr
+Si vous souhaitez déployer SireneD en production et avez besoin d'assistance, merci de bien vouloir nous écrire par mail à equipe+sirened@dilolabs.fr
 
 ## Licence
 
