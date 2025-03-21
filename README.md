@@ -1,4 +1,4 @@
-# 🏢 Sirene as API
+# 🏢 SireneD
 
 ## Description
 
