@@ -14,7 +14,7 @@ Vous pouvez essayer l'API en utilisant une instance hébergée chez OVHcloud :
 
     curl 'https://api.sirened.fr/api/v1/unites_legales/?q=Doctolib'
 
-Si celle-ci ne répond pas, merci de bien vouloir nous écrire par mail à equipe+sirene-as-api@dilolabs.fr
+Si celle-ci ne répond pas, merci de bien vouloir nous écrire par mail à equipe+sirened@dilolabs.fr
 
 ## Installation en environnement de développement
 
