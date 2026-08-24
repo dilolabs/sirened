@@ -29,7 +29,7 @@ Décision retenue : **accès libre en dev/test, Basic Auth en production.**
 
 - Initializer `config/initializers/mission_control_jobs.rb` qui active la
   Basic Auth du gem uniquement si les variables d'environnement
-  `MISSION_CONTROL_JOBS_USERNAME` et `MISSION_CONTROL_JOBS_PASSWORD`
+  `MISSION_CONTROL_JOBS_USER` et `MISSION_CONTROL_JOBS_PASSWORD`
   sont définies.
 - dev/test : variables non définies → accès libre.
 - production : variables définies via l'environnement de déploiement
