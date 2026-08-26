@@ -64,5 +64,5 @@ gem "mission_control-jobs"
 gem "propshaft"
 
 # Rails 8.0's test runner is incompatible with Minitest 6
-# (fixed in Rails >= 8.1.2); pin the last 5.x until the Rails upgrade.
+# (fixed in Rails 8.0.5 / 8.1.2); pin the last 5.x until the Rails upgrade.
 gem "minitest", "~> 5.27.0"
