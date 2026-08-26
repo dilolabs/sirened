@@ -64,4 +64,8 @@ Rails.application.configure do
 
   # Raise error when a before_action's only/except options reference missing actions.
   config.action_controller.raise_on_missing_callback_actions = true
+
+  # Open access to the Mission Control Jobs UI (/jobs) in development.
+  # The gem denies access by default when enabled without credentials.
+  config.mission_control.jobs.http_basic_auth_enabled = false
 end

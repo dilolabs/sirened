@@ -111,7 +111,7 @@ one:
   numeroVoie2Etablissement: MyString
   numeroVoieEtablissement: MyString
   siren: MyString
-  siret: MyString
+  siret: "12345678900001"
   statutDiffusionEtablissement: MyString
   trancheEffectifsEtablissement: MyString
   typeVoie2Etablissement: MyString
@@ -162,7 +162,7 @@ two:
   numeroVoie2Etablissement: MyString
   numeroVoieEtablissement: MyString
   siren: MyString
-  siret: MyString
+  siret: "12345678900002"
   statutDiffusionEtablissement: MyString
   trancheEffectifsEtablissement: MyString
   typeVoie2Etablissement: MyString
