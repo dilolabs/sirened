@@ -78,7 +78,7 @@ one:
   pseudonymeUniteLegale: MyString
   sexeUniteLegale: MyString
   sigleUniteLegale: MyString
-  siren: MyString
+  siren: "123456789"
   societeMissionUniteLegale: MyString
   statutDiffusionUniteLegale: MyString
   trancheEffectifsUniteLegale: MyString
@@ -114,7 +114,7 @@ two:
   pseudonymeUniteLegale: MyString
   sexeUniteLegale: MyString
   sigleUniteLegale: MyString
-  siren: MyString
+  siren: "987654321"
   societeMissionUniteLegale: MyString
   statutDiffusionUniteLegale: MyString
   trancheEffectifsUniteLegale: MyString
