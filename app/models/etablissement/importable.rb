@@ -7,7 +7,7 @@ module Etablissement::Importable
 
   included do
     BATCH_SIZE = 10_000
-    ZIP_SOURCE = "https://files.data.gouv.fr/insee-sirene/StockEtablissement_utf8.zip"
+    ZIP_SOURCE = "https://www.data.gouv.fr/api/1/datasets/r/0651fb76-bcf3-4f6a-a38d-bc04fa708576"
     ZIP_DESTINATION = Rails.root.join("storage", "StockEtablissement_utf8.zip")
     CSV_DESTINATION = Rails.root.join("storage", "StockEtablissement_utf8.csv")
 
@@ -28,21 +28,38 @@ module Etablissement::Importable
     def self.download_stock(source: ZIP_SOURCE, destination: ZIP_DESTINATION)
       Rails.logger.info "Starting download of #{source} to #{destination}"
       begin
-        uri = URI.parse(source)
-        response = Net::HTTP.get_response(uri)
+        uri = resolve_final_uri(URI.parse(source))
 
-        if response.is_a?(Net::HTTPSuccess)
-          File.open(destination, 'wb') do |file|
-            file.write(response.body)
+        Net::HTTP.start(uri.host, uri.port, use_ssl: uri.is_a?(URI::HTTPS), read_timeout: 300) do |http|
+          http.request_get(uri.request_uri) do |response|
+            unless response.is_a?(Net::HTTPSuccess)
+              Rails.logger.error "Failed to download file. HTTP Status: #{response.code} - #{response.message}"
+              raise "Download failed"
+            end
+
+            File.open(destination, "wb") do |file|
+              response.read_body { |chunk| file.write(chunk) }
+            end
           end
-          Rails.logger.info "Successfully downloaded to #{destination}"
-        else
-          Rails.logger.error "Failed to download file. HTTP Status: #{response.code} - #{response.message}"
-          raise "Download failed"
         end
+        Rails.logger.info "Successfully downloaded to #{destination}"
       rescue StandardError => e
         Rails.logger.error "Error during download: #{e.message}"
         raise
+      end
+    end
+
+    def self.resolve_final_uri(uri, remaining_redirects: 5)
+      response = Net::HTTP.start(uri.host, uri.port, use_ssl: uri.is_a?(URI::HTTPS)) do |http|
+        http.head(uri.request_uri)
+      end
+
+      if response.is_a?(Net::HTTPRedirection)
+        raise "Too many redirects while downloading #{uri}" if remaining_redirects.zero?
+
+        resolve_final_uri(URI.join(uri, response["location"]), remaining_redirects: remaining_redirects - 1)
+      else
+        uri
       end
     end
 
