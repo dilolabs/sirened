@@ -83,4 +83,13 @@ Rails.application.configure do
   #
   # Skip DNS rebinding protection for the default health check endpoint.
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
+
+  # HTTP Basic Auth for the Mission Control Jobs UI (/jobs).
+  # Enabled by default (deny-all until credentials are provided).
+  # Set MISSION_CONTROL_JOBS_USER and MISSION_CONTROL_JOBS_PASSWORD in the
+  # deployment environment (e.g. Kamal secrets). Both are required.
+  if ENV["MISSION_CONTROL_JOBS_USER"].present? && ENV["MISSION_CONTROL_JOBS_PASSWORD"].present?
+    config.mission_control.jobs.http_basic_auth_user = ENV["MISSION_CONTROL_JOBS_USER"]
+    config.mission_control.jobs.http_basic_auth_password = ENV["MISSION_CONTROL_JOBS_PASSWORD"]
+  end
 end
